@@ -52,14 +52,14 @@ void insertion_sort_list(listint_t **list)
 	while (i < list_len(list))
 	{
 		tmp = list[i];
-		j = i;
-		while (j > 0 && list[j - 1] > tmp)
+		j = i - 1;
+		while (j >= 0 && list[j] > tmp)
 		{
-			// swap & print result
-			insert_node(&list[j], &list[j - 1]);
+			list[j + 1] = list[j];
 			printf("%s\n", list);
 			j--;
 		}
+		list[j + 1] = tmp;
 		i++;
 	}
 }
