@@ -5,8 +5,7 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	int i = 0, j = 1;
-	int min, a;
+	size_t i = 0, j = 1, min_index, tmp;
 
 	if (array == NULL || size < 2)
 		return;
@@ -18,7 +17,7 @@ void selection_sort(int *array, size_t size)
 		/* Find min in array */
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[min])
+			if (array[j] < array[min_index])
 				min_index = j;
 		}
 		if (min_index != i)
