@@ -1,5 +1,8 @@
 #include "sort.h"
 #include <stdio.h>
+/**
+ * nb: breaks on arrays that are already sorted
+ */
 
 /**
  * swap - swaps two elements in an array and prints the array
