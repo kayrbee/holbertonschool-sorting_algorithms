@@ -7,28 +7,44 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *max_node, *current_node;
+	listint_t *sorted, *current, left, right;
 
 	if (list == NULL)
 		exit (99);
 
-	max_node = list;
-	current_node = max_node + 1;
+	sorted = list;
+	current = sorted->next;
 
-	while (current_node != NULL)
+	while (sorted->next != NULL)
 	{
-		if (current_node->n < max_node->n)
+		if (current->n < sorted->n)
 		{
+			/* Update head of list if needed */
+			if (sorted->prev == NULL)
+			{
+				list = current;
+				right = current->next;
+				current->next = sorted;
+				current->prev = NULL;
+				sorted->prev = current;
+				sorted->next = right;
+				right->prev = sorted;
+			}
+			/* Otherwise normal node swap */
+			else
+			{
+				left = sorted->prev;
+				right = current->next;
+				left->next = current;
+				current->prev = left;
+				current->next = sorted;
+				sorted->prev = current;
+				sorted->next = right;
+			}
 		}
-	}
-		// Compare current node i to highest value in sorted list
-		// While i != NULL
-		// If (i->n < i-1->n), locate correct insertion point
-		//   compare i->n to i-1->n, i-2->n ...
-		//   Insert node i before node x when (i->n < x->n)
-		//   nb: doubly linked list
-		//   print list
-		// Increment to i + 1;
+		printf(list);
+		sorted = sorted->next;
+		current = sorted->next;
 	}
 }
 
