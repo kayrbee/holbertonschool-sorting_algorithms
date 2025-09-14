@@ -35,8 +35,8 @@ void insertion_sort_list(listint_t **list)
 			else
 				*list = tmp;
 			insert = tmp->prev;
+			print_list(*list);
 		}
-		print_list(*list);
 	}
 }
 
